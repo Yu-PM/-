@@ -1,6 +1,7 @@
 /**
  * calc-engine.js - 维度计算与身份映射引擎
- * 后台静默计算，不向UI层暴露分数和维度名称
+ * 基于答题准确率 + 维度倾向 进行身份判定
+ * 后台静默计算，不向UI层暴露任何分数
  */
 
 const CalcEngine = {
@@ -8,38 +9,39 @@ const CalcEngine = {
 
   /**
    * 根据答题记录计算主导维度
-   * @param {Array} answers - QuizEngine 产生的 answers 数组
-   * @returns {string} dominantDimension: 'compliance' | 'business' | 'governance' | 'balanced'
+   * 策略：
+   * 1. 统计各维度答对数
+   * 2. 答错的题也给 0.1 分微弱信号（表示用户接触了该领域）
+   * 3. 只有三维度得分完全相等才判定 balanced
    */
   calcDominantDimension(answers) {
     const scores = { compliance: 0, business: 0, governance: 0 };
 
     answers.forEach(a => {
-      if (a.isCorrect && scores.hasOwnProperty(a.dimension)) {
-        scores[a.dimension]++;
+      if (!scores.hasOwnProperty(a.dimension)) return;
+      if (a.isCorrect) {
+        scores[a.dimension] += 1;
+      } else {
+        scores[a.dimension] += 0.1;
       }
     });
 
-    const values = Object.values(scores);
+    const values = this.DIMENSIONS.map(d => scores[d]);
     const maxScore = Math.max(...values);
+    const minScore = Math.min(...values);
 
-    // 找出所有得最高分的维度
-    const topDimensions = this.DIMENSIONS.filter(d => scores[d] === maxScore);
+    // 全部为0或极低分
+    if (maxScore <= 0.2) return 'balanced';
 
-    // 若最高分为0（全部答错），判定为 balanced
-    if (maxScore === 0) return 'balanced';
+    // 只有三个维度得分完全相等时才判定 balanced
+    if (maxScore === minScore) return 'balanced';
 
-    // 若多个维度并列最高，判定为 balanced
-    if (topDimensions.length > 1) return 'balanced';
+    // 找出最高维度
+    const topDimension = this.DIMENSIONS.reduce((best, d) =>
+      scores[d] > scores[best] ? d : best
+    , this.DIMENSIONS[0]);
 
-    // 检查最高分与第二高分的差距
-    const sortedValues = [...values].sort((a, b) => b - a);
-    const secondScore = sortedValues[1];
-
-    // 差距 <= 1 则判定为 balanced
-    if (maxScore - secondScore <= 1) return 'balanced';
-
-    return topDimensions[0];
+    return topDimension;
   },
 
   /**

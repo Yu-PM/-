@@ -45,7 +45,7 @@ const QuizEngine = {
     return {
       questions,
       currentIndex: 0,
-      answers: [],    // 每题：{ selectedIndex, isCorrect }
+      answers: [],
       isAnswered: false
     };
   },
