@@ -1,0 +1,6 @@
+.joycode/
+assets/
+fix-json.js
+.DS_Store
+*.log
+node_modules/

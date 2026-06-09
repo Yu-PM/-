@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>支付知多少 · 测出你的江湖地位</title>
+  <link rel="stylesheet" href="./styles/base.css">
+  <link rel="stylesheet" href="./styles/home.css">
+  <link rel="stylesheet" href="./styles/quiz.css">
+  <link rel="stylesheet" href="./styles/result.css">
+</head>
+<body>
+
+<!-- ========== 首页 ========== -->
+<section id="view-home" class="view pattern-bg">
+  <div class="home-header">
+    <div class="home-title-deco">❖ 江湖测评 ❖</div>
+    <h1 class="home-title">支付知多少</h1>
+    <p class="home-subtitle">六道江湖试炼，测出你的支付身份</p>
+  </div>
+
+  <div class="home-divider">
+    <div class="divider">❦</div>
+  </div>
+
+  <div class="level-section">
+    <div class="level-section-title">— 选择你的试炼等级 —</div>
+    <div class="level-grid">
+
+      <div class="level-card" data-level="L1">
+        <div class="level-badge badge-l1"><span class="seal-text">学</span></div>
+        <div class="level-tag">L1</div>
+        <div class="level-name">支付学徒</div>
+        <div class="level-desc">支付基础认知<br>入门级必测</div>
+      </div>
+
+      <div class="level-card" data-level="L2">
+        <div class="level-badge badge-l2"><span class="seal-text">进</span></div>
+        <div class="level-tag">L2</div>
+        <div class="level-name">支付进阶者</div>
+        <div class="level-desc">链路与合规<br>有基础的你</div>
+      </div>
+
+      <div class="level-card" data-level="L3">
+        <div class="level-badge badge-l3"><span class="seal-text">探</span></div>
+        <div class="level-tag">L3</div>
+        <div class="level-name">支付探索者</div>
+        <div class="level-desc">深度产品设计<br>资深从业者</div>
+      </div>
+
+      <div class="level-card" data-level="L4">
+        <div class="level-badge badge-l4"><span class="seal-text">达</span></div>
+        <div class="level-tag">L4</div>
+        <div class="level-name">支付达人</div>
+        <div class="level-desc">架构与前沿<br>顶尖挑战</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="home-footer">
+    每次随机抽取 6 题 · 支付江湖等你来闯
+  </div>
+</section>
+
+
+<!-- ========== 答题页 ========== -->
+<section id="view-quiz" class="view">
+
+  <!-- 加载中 -->
+  <div id="quiz-loading" class="tip-box" style="display:none;">
+    <div class="tip-icon">⏳</div>
+    <p>正在布置试炼…</p>
+  </div>
+
+  <!-- 答题内容 -->
+  <div id="quiz-content" style="display:none; width:100%;">
+
+    <!-- 顶部进度 -->
+    <div class="quiz-header">
+      <div class="quiz-top">
+        <span class="quiz-level-tag">L1 · 支付学徒</span>
+        <span class="quiz-progress-text">第 1 题 / 共 6 题</span>
+      </div>
+      <div class="quiz-dots"></div>
+    </div>
+
+    <!-- 题目卡片 -->
+    <div class="quiz-card">
+      <div id="quiz-question" class="quiz-question"></div>
+      <div id="quiz-options" class="quiz-options"></div>
+
+      <!-- 解析区 -->
+      <div id="quiz-explanation" class="quiz-explanation">
+        <div class="quiz-explanation-label">江湖解析</div>
+        <div id="quiz-explanation-text"></div>
+      </div>
+    </div>
+
+    <!-- 下一题按钮 -->
+    <div class="quiz-footer">
+      <button id="btn-next" class="btn-gold">下一题</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== 结果页 ========== -->
+<section id="view-result" class="view">
+  <div class="scroll-wrap">
+
+    <!-- 榜单标题 -->
+    <div class="result-banner">
+      <div class="result-banner-title">支付江湖榜</div>
+    </div>
+
+    <!-- 身份主卡 -->
+    <div class="identity-card">
+      <span id="result-badge" class="identity-badge-icon">🏆</span>
+      <div id="result-level-tag" class="identity-label">L1 · 支付学徒</div>
+      <div id="result-name" class="identity-name">天机匠人</div>
+      <p id="result-intro" class="identity-intro"></p>
+      <div id="result-quote" class="identity-quote"></div>
+    </div>
+
+    <!-- AI点评 -->
+    <div class="result-section">
+      <div class="result-section-title">江湖点评</div>
+      <div id="result-ai-comment" class="result-ai-comment"></div>
+    </div>
+
+    <!-- 修炼建议 -->
+    <div class="result-section">
+      <div class="result-section-title">下阶修炼方向</div>
+      <ul id="result-steps" class="result-steps"></ul>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="result-actions">
+      <button id="btn-poster" class="btn-gold">生成江湖身份海报</button>
+      <button id="btn-retry" class="btn-outline">重新挑战</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== 海报弹窗 ========== -->
+<div id="poster-modal">
+  <div class="poster-modal-inner">
+    <div class="poster-modal-title">✦ 我的江湖身份 ✦</div>
+    <canvas id="poster-canvas"></canvas>
+    <div class="poster-hint">移动端：长按图片保存 · PC端：点击下载</div>
+    <div class="poster-actions">
+      <button id="btn-download" class="btn-gold">下载海报</button>
+      <button id="poster-close" class="btn-outline">关闭</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- JS：按依赖顺序加载 -->
+<script src="./js/data.js"></script>
+<script src="./js/quiz-engine.js"></script>
+<script src="./js/calc-engine.js"></script>
+<script src="./js/result.js"></script>
+<script src="./js/poster.js"></script>
+<script src="./js/app.js"></script>
+
+</body>
+</html>

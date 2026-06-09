@@ -1,0 +1,231 @@
+/* result.css - 结果页与海报弹窗样式 */
+
+#view-result {
+  background: var(--color-paper);
+  padding-top: 0.4rem;
+  padding-bottom: 0.6rem;
+  align-items: center;
+}
+
+/* 卷轴容器 */
+.scroll-wrap {
+  width: 100%;
+  max-width: 7.5rem;
+  padding: 0 0.3rem;
+  animation: scrollUnroll 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes scrollUnroll {
+  from {
+    opacity: 0;
+    transform: translateY(-0.3rem) scaleY(0.85);
+    transform-origin: top center;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* 榜单标题 */
+.result-banner {
+  text-align: center;
+  margin-bottom: 0.32rem;
+  position: relative;
+}
+
+.result-banner-title {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-size: 0.22rem;
+  font-weight: bold;
+  color: var(--color-gold);
+  letter-spacing: 0.4em;
+  padding: 0.1rem 0.3rem;
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+/* 身份主卡 */
+.identity-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 0.4rem 0.28rem 0.36rem;
+  margin-bottom: 0.2rem;
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--color-paper-dark);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold-dark));
+}
+
+.identity-badge-icon {
+  font-size: 0.56rem;
+  margin-bottom: 0.12rem;
+  line-height: 1;
+  display: block;
+}
+
+.identity-label {
+  font-size: 0.14rem;
+  color: var(--color-gold-dark);
+  letter-spacing: 0.3em;
+  font-family: var(--font-serif);
+  margin-bottom: 0.1rem;
+}
+
+.identity-name {
+  font-family: var(--font-serif);
+  font-size: 0.5rem;
+  font-weight: bold;
+  color: var(--color-ink);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.2rem;
+  text-shadow: 1px 1px 3px rgba(199,154,59,0.25);
+}
+
+.identity-intro {
+  font-size: 0.15rem;
+  color: var(--color-ink-light);
+  line-height: 1.8;
+  margin-bottom: 0.2rem;
+}
+
+.identity-quote {
+  font-family: var(--font-serif);
+  font-size: 0.17rem;
+  color: var(--color-gold-dark);
+  font-style: italic;
+  padding: 0.14rem 0.2rem;
+  border-left: 3px solid var(--color-gold);
+  background: rgba(199,154,59,0.06);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* 详情区块 */
+.result-section {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 0.28rem;
+  margin-bottom: 0.16rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.result-section-title {
+  font-family: var(--font-serif);
+  font-size: 0.17rem;
+  font-weight: bold;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.16rem;
+  display: flex;
+  align-items: center;
+  gap: 0.08rem;
+}
+
+.result-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.result-ai-comment {
+  font-size: 0.15rem;
+  color: var(--color-ink-light);
+  line-height: 1.9;
+}
+
+.result-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.result-steps li {
+  font-size: 0.15rem;
+  color: var(--color-ink);
+  padding-left: 0.24rem;
+  position: relative;
+  line-height: 1.6;
+}
+
+.result-steps li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--color-gold);
+  font-size: 0.12rem;
+  top: 0.04rem;
+}
+
+/* 操作按钮区 */
+.result-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+  margin-top: 0.28rem;
+  align-items: center;
+}
+
+/* 海报弹窗 */
+#poster-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+}
+#poster-modal.show { display: flex; }
+
+.poster-modal-inner {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 0.28rem;
+  width: 100%;
+  max-width: 6rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.poster-modal-title {
+  font-family: var(--font-serif);
+  font-size: 0.18rem;
+  color: var(--color-ink);
+  margin-bottom: 0.18rem;
+  letter-spacing: 0.1em;
+}
+
+#poster-canvas {
+  width: 100%;
+  border-radius: var(--radius-md);
+  display: block;
+  margin-bottom: 0.18rem;
+}
+
+.poster-hint {
+  font-size: 0.13rem;
+  color: #9CA3AF;
+  margin-bottom: 0.18rem;
+}
+
+.poster-actions {
+  display: flex;
+  gap: 0.12rem;
+  justify-content: center;
+}

@@ -1,0 +1,233 @@
+/* home.css - 首页样式 */
+
+#view-home {
+  background: var(--color-paper);
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
+}
+
+/* 顶部标题区 */
+.home-header {
+  text-align: center;
+  padding: 0 0.3rem;
+  margin-bottom: 0.4rem;
+}
+
+.home-title-deco {
+  font-size: 0.22rem;
+  color: var(--color-gold);
+  letter-spacing: 0.3em;
+  font-family: var(--font-serif);
+  margin-bottom: 0.08rem;
+}
+
+.home-title {
+  font-family: var(--font-serif);
+  font-size: 0.52rem;
+  font-weight: bold;
+  color: var(--color-ink);
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(199,154,59,0.2);
+  margin-bottom: 0.12rem;
+}
+
+.home-subtitle {
+  font-size: 0.16rem;
+  color: var(--color-ink-light);
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+}
+
+/* 分隔装饰 */
+.home-divider {
+  width: 2.4rem;
+  margin: 0 auto 0.4rem;
+}
+
+/* 等级选择区 */
+.level-section {
+  width: 100%;
+  padding: 0 0.3rem;
+}
+
+.level-section-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 0.18rem;
+  color: var(--color-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.24rem;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.16rem;
+  max-width: 6.6rem;
+  margin: 0 auto;
+}
+
+/* 等级卡片 */
+.level-card {
+  background: white;
+  border: 1.5px solid var(--color-paper-dark);
+  border-radius: var(--radius-lg);
+  padding: 0.28rem 0.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.level-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold-dark));
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.level-card:hover,
+.level-card:active {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold);
+  transform: translateY(-2px);
+}
+
+.level-card:hover::before,
+.level-card:active::before {
+  opacity: 1;
+}
+
+.level-badge {
+  width: 0.72rem;
+  height: 0.72rem;
+  margin: 0 auto 0.14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 50%;
+}
+
+/* 印章文字 */
+.seal-text {
+  font-family: var(--font-serif);
+  font-size: 0.3rem;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* L1 - 青铜印章（新芽绿底） */
+.badge-l1 {
+  background: radial-gradient(circle, #f0f7f0 30%, #d4edda 100%);
+  border: 2.5px solid #5a9e6f;
+  box-shadow: 0 2px 8px rgba(90, 158, 111, 0.25), inset 0 0 8px rgba(90, 158, 111, 0.1);
+}
+.badge-l1 .seal-text { color: #2d6a3f; }
+.badge-l1::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(90, 158, 111, 0.4);
+}
+
+/* L2 - 白银印章（冷银蓝底） */
+.badge-l2 {
+  background: radial-gradient(circle, #f8f9fc 30%, #e2e8f0 100%);
+  border: 2.5px solid #64748b;
+  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3), inset 0 0 8px rgba(100, 116, 139, 0.1);
+}
+.badge-l2 .seal-text { color: #334155; }
+.badge-l2::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(100, 116, 139, 0.4);
+}
+
+/* L3 - 黄金印章（金色底） */
+.badge-l3 {
+  background: radial-gradient(circle, #fffbeb 20%, #fde68a 100%);
+  border: 2.5px solid var(--color-gold);
+  box-shadow: 0 2px 12px rgba(199, 154, 59, 0.4), inset 0 0 8px rgba(199, 154, 59, 0.15);
+}
+.badge-l3 .seal-text { color: #92400e; }
+.badge-l3::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(199, 154, 59, 0.5);
+}
+
+/* L4 - 朱砂印章（朱红底，最高级） */
+.badge-l4 {
+  background: radial-gradient(circle, #fef2f2 20%, #fecaca 100%);
+  border: 2.5px solid #991b1b;
+  box-shadow: 0 2px 12px rgba(153, 27, 27, 0.35), inset 0 0 10px rgba(153, 27, 27, 0.1);
+}
+.badge-l4 .seal-text { color: #7f1d1d; }
+.badge-l4::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(153, 27, 27, 0.4);
+}
+
+/* 卡片悬浮时印章动效 */
+.level-card:hover .level-badge,
+.level-card:active .level-badge {
+  transform: scale(1.08) rotate(-3deg);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.level-card .level-badge {
+  transition: transform 0.2s ease;
+}
+
+.level-tag {
+  display: inline-block;
+  background: var(--color-gold);
+  color: white;
+  font-size: 0.12rem;
+  font-weight: bold;
+  padding: 0.02rem 0.1rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.08rem;
+}
+
+.level-name {
+  font-family: var(--font-serif);
+  font-size: 0.18rem;
+  font-weight: bold;
+  color: var(--color-ink);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.06rem;
+}
+
+.level-desc {
+  font-size: 0.12rem;
+  color: #6B7280;
+  line-height: 1.5;
+}
+
+/* 底部提示 */
+.home-footer {
+  text-align: center;
+  margin-top: 0.36rem;
+  font-size: 0.13rem;
+  color: #9CA3AF;
+  letter-spacing: 0.05em;
+}

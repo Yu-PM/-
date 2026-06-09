@@ -1,0 +1,175 @@
+/* quiz.css - 答题页样式 */
+
+#view-quiz {
+  background: var(--color-paper);
+  padding-top: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+
+/* 顶部进度区 */
+.quiz-header {
+  padding: 0 0.3rem;
+  margin-bottom: 0.32rem;
+  max-width: 7.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quiz-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.16rem;
+}
+
+.quiz-level-tag {
+  background: var(--color-gold);
+  color: white;
+  font-size: 0.13rem;
+  padding: 0.04rem 0.14rem;
+  border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.quiz-progress-text {
+  font-family: var(--font-serif);
+  font-size: 0.15rem;
+  color: var(--color-ink-light);
+  letter-spacing: 0.05em;
+}
+
+/* 进度点指示器 */
+.quiz-dots {
+  display: flex;
+  gap: 0.1rem;
+  justify-content: center;
+}
+.quiz-dot {
+  width: 0.1rem;
+  height: 0.1rem;
+  border-radius: 50%;
+  background: var(--color-paper-dark);
+  transition: background 0.2s;
+}
+.quiz-dot.done { background: var(--color-gold); }
+.quiz-dot.current { background: var(--color-gold-dark); box-shadow: 0 0 0 2px rgba(199,154,59,0.3); }
+
+/* 题目卡片 */
+.quiz-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 0.36rem 0.28rem;
+  margin: 0 0.3rem 0.24rem;
+  box-shadow: var(--shadow-md);
+  border-top: 3px solid var(--color-gold);
+  max-width: 6.9rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quiz-question {
+  font-family: var(--font-serif);
+  font-size: 0.2rem;
+  font-weight: bold;
+  color: var(--color-ink);
+  line-height: 1.6;
+  margin-bottom: 0.28rem;
+  letter-spacing: 0.03em;
+}
+
+/* 选项列表 */
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.14rem;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  padding: 0.16rem 0.2rem;
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-paper-dark);
+  border-radius: var(--radius-md);
+  font-size: 0.16rem;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.5;
+  min-height: 0.52rem;
+  display: flex;
+  align-items: center;
+  gap: 0.12rem;
+}
+
+.option-btn:not(.disabled):hover {
+  border-color: var(--color-gold);
+  background: rgba(199,154,59,0.06);
+}
+
+.option-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.26rem;
+  height: 0.26rem;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  font-size: 0.13rem;
+  font-weight: bold;
+  flex-shrink: 0;
+  color: var(--color-gold-dark);
+}
+
+.option-btn.correct {
+  background: var(--color-correct-bg);
+  border-color: var(--color-correct);
+  color: var(--color-correct);
+}
+.option-btn.correct .option-label { border-color: var(--color-correct); }
+
+.option-btn.wrong {
+  background: var(--color-wrong-bg);
+  border-color: var(--color-wrong);
+  color: var(--color-wrong);
+}
+.option-btn.wrong .option-label { border-color: var(--color-wrong); }
+
+.option-btn.disabled { cursor: not-allowed; }
+
+/* 解析区 */
+.quiz-explanation {
+  display: none;
+  margin-top: 0.24rem;
+  padding: 0.18rem 0.2rem;
+  background: rgba(199,154,59,0.08);
+  border-left: 3px solid var(--color-gold);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.14rem;
+  color: var(--color-ink-light);
+  line-height: 1.7;
+}
+.quiz-explanation.show { display: block; }
+.quiz-explanation-label {
+  font-weight: bold;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.06rem;
+  font-family: var(--font-serif);
+  font-size: 0.15rem;
+}
+
+/* 下一题按钮区 */
+.quiz-footer {
+  text-align: center;
+  padding: 0 0.3rem;
+  max-width: 7.5rem;
+  margin: 0 auto;
+}
+
+#btn-next {
+  display: none;
+  width: 100%;
+  max-width: 4rem;
+}
+#btn-next.show { display: inline-block; }
