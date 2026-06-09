@@ -144,5 +144,245 @@
     "answer": 1,
     "dimension": "business",
     "explanation": "兜底渠道是高可用策略的关键，当主渠道故障或不可用时，自动切换至兜底渠道保障支付成功率。"
+  },
+  {
+    "id": "L2-013",
+    "question": "2026年，中国人民银行对支付机构提出了什么新的监管要求？",
+    "options": ["仅要求规范业务流程", "仅要求增强系统安全", "从严实施穿透式监管和支付业务功能监管", "仅要求规范商户管理"],
+    "answer": 2,
+    "dimension": "regulatory_compliance",
+    "explanation": "2026年初央行支付结算工作会议明确从严实施穿透式监管。"
+  },
+  {
+    "id": "L2-014",
+    "question": "2026年支付机构罚单的明显特点包括什么？",
+    "options": ["仅处罚机构不处罚个人", "处罚集中在广告违规", "双罚制（机构和相关人员同时被罚）和监管穿透业务全流程", "仅处罚技术问题"],
+    "answer": 2,
+    "dimension": "regulatory_compliance",
+    "explanation": "双罚制明显增多，监管覆盖全业务流程。"
+  },
+  {
+    "id": "L2-015",
+    "question": "支付机构违反数据安全管理规定，技术负责人被追责，这说明了什么？",
+    "options": ["监管处罚只针对高管", "技术岗位不再是合规避风港，数据合规需全链条负责", "技术系统可以不满足法规要求", "数据安全不在监管范围内"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "技术中心负责人被罚，说明技术条线也需承担合规责任。"
+  },
+  {
+    "id": "L2-016",
+    "question": "《非银行支付机构监督管理条例实施细则》规定，从事储值账户运营Ⅰ类业务的支付机构，注册资本有何附加要求？",
+    "options": ["无需额外要求", "在1亿元基础上额外增加1亿元注册资本", "额外增加5000万元", "额外增加2亿元"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "《实施细则》第八条，全国性储值账户运营Ⅰ类业务需增加至2亿元。"
+  },
+  {
+    "id": "L2-017",
+    "question": "同一实际控制人控制多家支付机构有何限制？",
+    "options": ["没有限制", "不得控制2家及以上同一业务类型的支付机构", "可以控制任意多家", "需上报银保监会批准即可"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "《条例》规定同一实控人不得控制2家及以上同类型支付机构。"
+  },
+  {
+    "id": "L2-018",
+    "question": "支付机构的高级管理人员如果不再符合资质要求，应如何处理？",
+    "options": ["继续任职无需处理", "需在10日内停职并向央行分支机构报告", "仅需内部调整", "待资质恢复后可继续任职"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "《实施细则》要求10日内停职并报告。"
+  },
+  {
+    "id": "L2-019",
+    "question": "支付机构分类评级的维度有哪些？",
+    "options": ["仅业务规模和利润", "公司治理、业务规范、备付金管理、用户权益保护、系统安全、反洗钱措施、经营稳健性", "仅用户投诉量", "仅系统稳定性"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "分类评级包含七个模块。"
+  },
+  {
+    "id": "L2-020",
+    "question": "支付机构分类评级结果分为几个等级？",
+    "options": ["3类5级", "5类11级", "4类8级", "6类12级"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "分为5类11个细分等级（AAA、AA、A、BBB、BB、B、CCC、CC、C、D、E）。"
+  },
+  {
+    "id": "L2-021",
+    "question": "支付机构分类评级中哪一个模块的分值最高？",
+    "options": ["公司治理", "业务规范", "系统安全", "反洗钱措施"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "业务规范赋值25分，总分最高。"
+  },
+  {
+    "id": "L2-022",
+    "question": "支付机构在什么情况下会直接被评定为E类机构？",
+    "options": ["存在轻微违规", "超出批准的业务类型或经营地域范围开展支付业务", "用户投诉较多", "交易量下降"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "超出许可范围属于重大违规，直接评为E类。"
+  },
+  {
+    "id": "L2-023",
+    "question": "支付机构分类评级结果是否可以用于广告宣传？",
+    "options": ["可以，有利于品牌传播", "不可以，分类评级结果仅限监管使用，不得用于商业目的", "经监管部门同意后可使用", "仅可用于内部汇报"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "评级结果不得用于广告、宣传等商业用途。"
+  },
+  {
+    "id": "L2-024",
+    "question": "支付机构发现重大事项时应如何报告？",
+    "options": ["无需报告", "应在规定时限内向央行分支机构报告", "仅内部记录即可", "向媒体发布公告"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "应建立重大事项报告制度，及时向监管报告。"
+  },
+  {
+    "id": "L2-025",
+    "question": "支付机构对高风险客户应如何管控？",
+    "options": ["按普通客户标准管理即可", "实施强化尽职调查，提高交易监测频率", "拒绝服务", "降低交易限额"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "高风险客户需强化尽职调查（EDD）。"
+  },
+  {
+    "id": "L2-026",
+    "question": "支付机构向不符合条件的特约商户提供T+0结算服务，属于什么性质？",
+    "options": ["正常业务优化", "合规的差异化服务", "监管违规行为，可能面临处罚", "行业惯例无需关注"],
+    "answer": 2,
+    "dimension": "regulatory_compliance",
+    "explanation": "违规提供T+0结算是常见处罚事由。"
+  },
+  {
+    "id": "L2-027",
+    "question": "2026年支付行业违规的重灾区主要集中在哪些领域？",
+    "options": ["手续费定价", "违反反洗钱管理规定、账户管理与清算管理违规、商户管理不严", "广告宣传", "客服响应速度"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "反洗钱、账户清算、商户管理是违规高发区。"
+  },
+  {
+    "id": "L2-028",
+    "question": "支付机构超出业务许可范围开展业务，属于什么性质？",
+    "options": ["可以申请事后补批", "属于严重违规，触碰分类评级E类红线", "仅需内部整改", "属于一般性违规"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "超出许可范围直接评为E类。"
+  },
+  {
+    "id": "L2-029",
+    "question": "断直连政策的核心合规要求是什么？",
+    "options": ["加强支付机构与银行的合作关系", "切断与银行的直连模式，所有交易必须通过网联或银联进行清算", "允许支付机构自行清算", "无需改变现有模式"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "断直连要求所有交易通过合法清算平台。"
+  },
+  {
+    "id": "L2-030",
+    "question": "开联通支付因哪些违规行为被罚没超3800万元？",
+    "options": ["仅违反反洗钱规定", "未能确保交易信息真实完整、违规开展支付账户向非同名银行账户转账业务、违规开展T+0交易结算等", "仅违反商户管理规定", "仅违反账户管理规定"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "公开罚单显示为多项违规。"
+  },
+  {
+    "id": "L2-031",
+    "question": "支付机构分类评级的加分项包括哪些情形？",
+    "options": ["仅及时报送材料", "积极落实监管规定并取得突出成效，以及及时排查支付业务风险并提供重要违规线索", "仅遵守合规要求", "仅交易量增长"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "加分项最高5分，激励主动风控。"
+  },
+  {
+    "id": "L2-032",
+    "question": "支付机构分类评级的减分项包括哪些情形？",
+    "options": ["仅用户投诉", "违规变更主要股东或实际控制人、为非法活动提供支付服务、受到央行行政处罚等", "仅业务规模下降", "仅系统故障"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "减分项最高减15分。"
+  },
+  {
+    "id": "L2-033",
+    "question": "客户尽职调查（CDD）的实施原则是什么？",
+    "options": ["仅办理业务时一次完成", "不是一次性的，而是在整个业务关系存续期间持续进行，定期更新客户信息和风险状况", "仅在客户投诉时进行", "仅在监管检查时进行"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "CDD是持续性的动态过程。"
+  },
+  {
+    "id": "L2-034",
+    "question": "支付机构是否可以要求用户为同一客户开立多个支付账户？",
+    "options": ["可以无限制开立", "可以但需用户同意", "央行规定支付机构不得为同一客户开立多个支付账户，这改变了粗放模式", "没有相关规定"],
+    "answer": 2,
+    "dimension": "regulatory_compliance",
+    "explanation": "央行明确不得为同一客户开立多个支付账户（除合理理由外）。"
+  },
+  {
+    "id": "L2-035",
+    "question": "个人静态收款条码在经营性收款方面的监管要求是什么？",
+    "options": ["可以正常使用", "个人静态收款条码禁止用于经营性收款", "仅可用于大额交易", "仅可用于境外交易"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "为防范洗钱和电诈，个人静态码不得用于经营收款。"
+  },
+  {
+    "id": "L2-036",
+    "question": "支付机构处理用户数据的哪些行为可能触发数据安全处罚？",
+    "options": ["仅存储数据", "核心数据采集、存储、传输不符合规范，数据防护体系存在漏洞，违规向第三方流转或泄露平台数据", "仅访问数据", "仅删除数据"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "数据安全处罚覆盖采集、存储、传输、流转等全环节。"
+  },
+  {
+    "id": "L2-037",
+    "question": "《非银行支付机构监督管理条例实施细则》对反洗钱制度的建设要求是什么？",
+    "options": ["无需单独建立制度", "需建立包含客户尽职调查、大额交易报告、风险自评估等具体措施的反洗钱制度", "仅需要一份文件", "仅需要反洗钱负责人即可"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "需建立完整的反洗钱内控制度。"
+  },
+  {
+    "id": "L2-038",
+    "question": "跨境支付机构获取香港MSO牌照的主要价值是什么？",
+    "options": ["仅便于品牌宣传", "多币种清算能力，可合法开展外币兑换与跨境汇款业务", "仅降低手续费", "仅拓展线下网点"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "MSO牌照赋予多币种清算和跨境汇款合规能力。"
+  },
+  {
+    "id": "L2-039",
+    "question": "支付机构支付业务许可证载明的内容必须包括什么？",
+    "options": ["仅机构名称", "可以从事的业务类型和经营地域范围", "仅法定代表人", "仅注册资本"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "许可证须载明业务类型和地域范围。"
+  },
+  {
+    "id": "L2-040",
+    "question": "支付业务的交易信息必须满足哪些可追溯性要求？",
+    "options": ["仅在用户查询时提供", "确保交易信息真实、完整、可追溯", "无需保持特定标准", "仅在争议时提供"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "《条例》第十八条要求可溯源性。"
+  },
+  {
+    "id": "L2-041",
+    "question": "支付机构为电信网络诈骗、跨境赌博等非法活动提供支付服务，在分类评级中如何影响？",
+    "options": ["不扣分", "属于应当减分的情形，情节严重可直接评为E类", "仅影响声誉", "仅承担民事责任"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "为非法活动提供支付服务，减分且可能直接评E。"
+  },
+  {
+    "id": "L2-042",
+    "question": "支付机构的技术系统不满足数据安全管理要求时，会面临什么后果？",
+    "options": ["仅内部整改", "可能触发行政处罚，技术负责人可能被追责", "不影响任何业务", "仅需向用户说明即可"],
+    "answer": 1,
+    "dimension": "regulatory_compliance",
+    "explanation": "数据安全违规可导致处罚并追责技术负责人。"
   }
 ]
