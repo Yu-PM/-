@@ -17,39 +17,39 @@
   background:
     linear-gradient(180deg,
       #1a1a1a 0%,
-      #2a2520 15%,
-      #3d3528 30%,
-      #5a4d3a 45%,
-      #8a7b5e 58%,
-      #b8a882 68%,
-      #d4c9a8 78%,
-      #e8dfca 88%,
-      var(--color-paper) 100%
+      #252018 12%,
+      #3d3528 28%,
+      #5a4d3a 44%,
+      #7a6b52 58%,
+      #9a8a68 70%,
+      #b8a882 82%,
+      #c8bb96 92%,
+      #d4c9a8 100%
     );
 }
 /* 远山层叠 */
 .home-bg::before {
   content: '';
   position: absolute;
-  bottom: 28%;
+  bottom: 10%;
   left: -10%;
   width: 120%;
-  height: 40%;
+  height: 45%;
   background:
-    radial-gradient(ellipse 80% 35% at 20% 85%, rgba(40,35,25,0.7) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 55% 80%, rgba(50,42,30,0.5) 0%, transparent 65%),
-    radial-gradient(ellipse 70% 30% at 80% 90%, rgba(45,38,28,0.6) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 35% at 20% 85%, rgba(40,35,25,0.6) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 55% 80%, rgba(50,42,30,0.4) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 30% at 80% 90%, rgba(45,38,28,0.5) 0%, transparent 70%);
   pointer-events: none;
 }
 /* 雾气效果 */
 .home-bg::after {
   content: '';
   position: absolute;
-  bottom: 25%;
+  bottom: 15%;
   left: 0;
   width: 100%;
-  height: 15%;
-  background: linear-gradient(180deg, transparent, rgba(200,190,170,0.3), transparent);
+  height: 12%;
+  background: linear-gradient(180deg, transparent, rgba(200,190,170,0.25), transparent);
   pointer-events: none;
 }
 
@@ -58,6 +58,7 @@
   z-index: 1;
   text-align: center;
   padding: 0 0.4rem;
+  margin-top: -0.6rem;
   animation: fadeIn 1s ease-out;
 }
 
