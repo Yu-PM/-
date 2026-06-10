@@ -5,149 +5,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <title>支付知多少 · 测出你的江湖地位</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/base.css">
   <link rel="stylesheet" href="./styles/home.css">
   <link rel="stylesheet" href="./styles/quiz.css">
+  <link rel="stylesheet" href="./styles/ai-reveal.css">
   <link rel="stylesheet" href="./styles/result.css">
 </head>
 <body>
 
-<!-- ========== 首页 ========== -->
-<section id="view-home" class="view pattern-bg">
-  <div class="home-header">
-    <div class="home-title-deco">❖ 江湖测评 ❖</div>
-    <h1 class="home-title">支付知多少</h1>
-    <p class="home-subtitle">六道江湖试炼，测出你的支付身份</p>
-  </div>
-
-  <div class="home-divider">
-    <div class="divider">❦</div>
-  </div>
-
-  <div class="level-section">
-    <div class="level-section-title">— 选择你的试炼等级 —</div>
-    <div class="level-grid">
-
-      <div class="level-card" data-level="L1">
-        <div class="level-badge badge-l1"><span class="seal-text">学</span></div>
-        <div class="level-tag">L1</div>
-        <div class="level-name">支付学徒</div>
-        <div class="level-desc">支付基础认知<br>入门级必测</div>
-      </div>
-
-      <div class="level-card" data-level="L2">
-        <div class="level-badge badge-l2"><span class="seal-text">进</span></div>
-        <div class="level-tag">L2</div>
-        <div class="level-name">支付进阶者</div>
-        <div class="level-desc">链路与合规<br>有基础的你</div>
-      </div>
-
-      <div class="level-card" data-level="L3">
-        <div class="level-badge badge-l3"><span class="seal-text">探</span></div>
-        <div class="level-tag">L3</div>
-        <div class="level-name">支付探索者</div>
-        <div class="level-desc">深度产品设计<br>资深从业者</div>
-      </div>
-
-      <div class="level-card" data-level="L4">
-        <div class="level-badge badge-l4"><span class="seal-text">达</span></div>
-        <div class="level-tag">L4</div>
-        <div class="level-name">支付达人</div>
-        <div class="level-desc">架构与前沿<br>顶尖挑战</div>
-      </div>
-
+<!-- ========== 01 首页 ========== -->
+<section id="view-home" class="view">
+  <div class="home-bg"></div>
+  <div class="home-content">
+    <div class="home-seal">
+      <span class="home-seal-text">密</span>
     </div>
-  </div>
-
-  <div class="home-footer">
-    每次随机抽取 6 题 · 支付江湖等你来闯
+    <h1 class="home-title">支付<br>知多少</h1>
+    <p class="home-subtitle">测一测你在<br>支付江湖中的身份</p>
+    <button id="btn-start" class="btn-cta">开始闯荡江湖</button>
   </div>
 </section>
 
 
-<!-- ========== 答题页 ========== -->
-<section id="view-quiz" class="view">
+<!-- ========== 02 选择难度 ========== -->
+<section id="view-levels" class="view">
+  <div class="levels-header">
+    <h2 class="levels-title">选择你的境界</h2>
+    <p class="levels-subtitle">不同境界，历练不同</p>
+  </div>
+  <div class="levels-list">
 
-  <!-- 加载中 -->
+    <div class="level-row" data-level="L1">
+      <div class="level-row-badge badge-l1"><span class="seal-text">学</span></div>
+      <div class="level-row-info">
+        <div class="level-row-name">支付学徒</div>
+        <div class="level-row-desc">初入江湖，略知皮毛</div>
+      </div>
+      <div class="level-row-arrow">›</div>
+    </div>
+
+    <div class="level-row" data-level="L2">
+      <div class="level-row-badge badge-l2"><span class="seal-text">进</span></div>
+      <div class="level-row-info">
+        <div class="level-row-name">支付进阶者</div>
+        <div class="level-row-desc">熟悉流程，指引方道</div>
+      </div>
+      <div class="level-row-arrow">›</div>
+    </div>
+
+    <div class="level-row" data-level="L3">
+      <div class="level-row-badge badge-l3"><span class="seal-text">探</span></div>
+      <div class="level-row-info">
+        <div class="level-row-name">支付探索者</div>
+        <div class="level-row-desc">洞察玄机，设计巧妙</div>
+      </div>
+      <div class="level-row-arrow">›</div>
+    </div>
+
+    <div class="level-row" data-level="L4">
+      <div class="level-row-badge badge-l4"><span class="seal-text">达</span></div>
+      <div class="level-row-info">
+        <div class="level-row-name">支付达人</div>
+        <div class="level-row-desc">精研精通，感悟支付真谛</div>
+      </div>
+      <div class="level-row-arrow">›</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ========== 03 答题页 ========== -->
+<section id="view-quiz" class="view">
   <div id="quiz-loading" class="tip-box" style="display:none;">
     <div class="tip-icon">⏳</div>
     <p>正在布置试炼…</p>
   </div>
 
-  <!-- 答题内容 -->
   <div id="quiz-content" style="display:none; width:100%;">
-
-    <!-- 顶部进度 -->
     <div class="quiz-header">
       <div class="quiz-top">
         <span class="quiz-level-tag">L1 · 支付学徒</span>
-        <span class="quiz-progress-text">第 1 题 / 共 6 题</span>
+        <span class="quiz-type-tag">单选题</span>
       </div>
-      <div class="quiz-dots"></div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-text">第 1 题 / 共 6 题</div>
+        <div class="quiz-dots"></div>
+      </div>
     </div>
 
-    <!-- 题目卡片 -->
     <div class="quiz-card">
       <div id="quiz-question" class="quiz-question"></div>
       <div id="quiz-options" class="quiz-options"></div>
-
-      <!-- 解析区 -->
       <div id="quiz-explanation" class="quiz-explanation">
         <div class="quiz-explanation-label">江湖解析</div>
         <div id="quiz-explanation-text"></div>
       </div>
     </div>
 
-    <!-- 下一题按钮 -->
     <div class="quiz-footer">
       <button id="btn-next" class="btn-gold">下一题</button>
     </div>
-
   </div>
 </section>
 
 
-<!-- ========== 结果页 ========== -->
+<!-- ========== 04 AI推演页 ========== -->
+<section id="view-reveal" class="view">
+  <div class="reveal-content">
+    <div class="reveal-title">正在推演你的<br>江湖身份…</div>
+    <div class="reveal-orb-area">
+      <div class="reveal-orb">
+        <div class="reveal-orb-inner"></div>
+        <div class="reveal-orb-ring"></div>
+        <div class="reveal-orb-ring reveal-orb-ring-2"></div>
+      </div>
+      <div class="reveal-radar">
+        <div class="reveal-radar-line"></div>
+        <div class="reveal-axis reveal-axis-1">
+          <span class="reveal-axis-dot"></span>
+          <span class="reveal-axis-label">监督合规</span>
+        </div>
+        <div class="reveal-axis reveal-axis-2">
+          <span class="reveal-axis-dot"></span>
+          <span class="reveal-axis-label">支付业务</span>
+        </div>
+        <div class="reveal-axis reveal-axis-3">
+          <span class="reveal-axis-dot"></span>
+          <span class="reveal-axis-label">支付治理</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-status">AI观星台 · 推演中</div>
+    <div class="reveal-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== 05 结果页 ========== -->
 <section id="view-result" class="view">
   <div class="scroll-wrap">
-
-    <!-- 榜单标题 -->
     <div class="result-banner">
       <div class="result-banner-title">支付江湖榜</div>
+      <div class="result-banner-sub">你的江湖身份是</div>
     </div>
 
-    <!-- 身份主卡 -->
     <div class="identity-card">
-      <span id="result-badge" class="identity-badge-icon">🏆</span>
+      <div class="identity-silhouette-wrap">
+        <div id="result-silhouette" class="identity-silhouette"></div>
+        <div class="identity-silhouette-ink"></div>
+      </div>
       <div id="result-level-tag" class="identity-label">L1 · 支付学徒</div>
       <div id="result-name" class="identity-name">天机匠人</div>
-      <p id="result-intro" class="identity-intro"></p>
-      <div id="result-quote" class="identity-quote"></div>
     </div>
 
-    <!-- AI点评 -->
     <div class="result-section">
-      <div class="result-section-title">江湖点评</div>
+      <div class="result-section-title">江湖语录</div>
+      <div id="result-quote" class="result-quote-text"></div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-section-title">AI点评</div>
       <div id="result-ai-comment" class="result-ai-comment"></div>
     </div>
 
-    <!-- 修炼建议 -->
     <div class="result-section">
-      <div class="result-section-title">下阶修炼方向</div>
+      <div class="result-section-title">修炼建议</div>
       <ul id="result-steps" class="result-steps"></ul>
     </div>
 
-    <!-- 操作按钮 -->
     <div class="result-actions">
-      <button id="btn-poster" class="btn-gold">生成江湖身份海报</button>
-      <button id="btn-retry" class="btn-outline">重新挑战</button>
+      <button id="btn-retry" class="btn-outline">再测一次</button>
+      <button id="btn-poster" class="btn-gold">分享江湖</button>
     </div>
-
   </div>
 </section>
 
 
-<!-- ========== 海报弹窗 ========== -->
+<!-- ========== 06 海报弹窗 ========== -->
 <div id="poster-modal">
   <div class="poster-modal-inner">
     <div class="poster-modal-title">✦ 我的江湖身份 ✦</div>
@@ -161,7 +201,6 @@
 </div>
 
 
-<!-- JS：按依赖顺序加载 -->
 <script src="./js/data.js"></script>
 <script src="./js/quiz-engine.js"></script>
 <script src="./js/calc-engine.js"></script>

@@ -6,120 +6,144 @@
   padding-bottom: 0.5rem;
 }
 
-/* 顶部进度区 */
 .quiz-header {
   padding: 0 0.3rem;
-  margin-bottom: 0.32rem;
+  margin-bottom: 0.28rem;
   max-width: 7.5rem;
   margin-left: auto;
   margin-right: auto;
+  animation: fadeInUp 0.4s ease-out;
 }
 
 .quiz-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.16rem;
+  margin-bottom: 0.14rem;
 }
 
 .quiz-level-tag {
-  background: var(--color-gold);
   color: white;
-  font-size: 0.13rem;
-  padding: 0.04rem 0.14rem;
+  font-size: 0.12rem;
+  padding: 0.03rem 0.12rem;
   border-radius: 20px;
   font-weight: bold;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  background: var(--color-gold);
+}
+#view-quiz[data-level="L1"] .quiz-level-tag { background: var(--color-l1); }
+#view-quiz[data-level="L2"] .quiz-level-tag { background: var(--color-l2); }
+#view-quiz[data-level="L3"] .quiz-level-tag { background: var(--color-l3); }
+#view-quiz[data-level="L4"] .quiz-level-tag { background: var(--color-l4); }
+
+.quiz-type-tag {
+  font-size: 0.12rem;
+  color: var(--color-gold-dark);
+  padding: 0.02rem 0.1rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.quiz-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.12rem;
 }
 
 .quiz-progress-text {
   font-family: var(--font-serif);
-  font-size: 0.15rem;
+  font-size: 0.14rem;
   color: var(--color-ink-light);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
-/* 进度点指示器 */
 .quiz-dots {
   display: flex;
-  gap: 0.1rem;
-  justify-content: center;
+  gap: 0.08rem;
 }
 .quiz-dot {
-  width: 0.1rem;
-  height: 0.1rem;
+  width: 0.09rem;
+  height: 0.09rem;
   border-radius: 50%;
   background: var(--color-paper-dark);
-  transition: background 0.2s;
+  transition: background 0.3s, transform 0.3s;
 }
-.quiz-dot.done { background: var(--color-gold); }
-.quiz-dot.current { background: var(--color-gold-dark); box-shadow: 0 0 0 2px rgba(199,154,59,0.3); }
+.quiz-dot.done { background: var(--color-gold); transform: scale(1.1); }
+.quiz-dot.current { background: var(--color-gold-dark); box-shadow: 0 0 0 2px rgba(199,154,59,0.25); }
 
 /* 题目卡片 */
 .quiz-card {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 0.36rem 0.28rem;
-  margin: 0 0.3rem 0.24rem;
+  padding: 0.3rem 0.24rem;
+  margin: 0 0.3rem 0.2rem;
   box-shadow: var(--shadow-md);
-  border-top: 3px solid var(--color-gold);
   max-width: 6.9rem;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid var(--color-paper-dark);
 }
+
+.quiz-card.card-enter { animation: fadeInUp 0.35s ease-out; }
 
 .quiz-question {
   font-family: var(--font-serif);
-  font-size: 0.2rem;
+  font-size: 0.19rem;
   font-weight: bold;
   color: var(--color-ink);
-  line-height: 1.6;
-  margin-bottom: 0.28rem;
-  letter-spacing: 0.03em;
+  line-height: 1.7;
+  margin-bottom: 0.24rem;
+  letter-spacing: 0.02em;
 }
 
-/* 选项列表 */
+/* 选项 */
 .quiz-options {
   display: flex;
   flex-direction: column;
-  gap: 0.14rem;
+  gap: 0.12rem;
 }
 
 .option-btn {
   width: 100%;
   text-align: left;
-  padding: 0.16rem 0.2rem;
+  padding: 0.14rem 0.18rem;
   background: var(--color-paper);
   border: 1.5px solid var(--color-paper-dark);
   border-radius: var(--radius-md);
-  font-size: 0.16rem;
+  font-size: 0.15rem;
   color: var(--color-ink);
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
   line-height: 1.5;
-  min-height: 0.52rem;
+  min-height: 0.48rem;
   display: flex;
   align-items: center;
   gap: 0.12rem;
 }
 
-.option-btn:not(.disabled):hover {
+.option-btn:not(.disabled):active {
   border-color: var(--color-gold);
   background: rgba(199,154,59,0.06);
+  transform: scale(0.98);
 }
 
+/* 圆形选项指示器 */
 .option-label {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 0.26rem;
-  height: 0.26rem;
+  width: 0.24rem;
+  height: 0.24rem;
   border-radius: 50%;
-  border: 1.5px solid currentColor;
-  font-size: 0.13rem;
+  border: 2px solid #d1d5db;
+  font-size: 0.12rem;
   font-weight: bold;
   flex-shrink: 0;
-  color: var(--color-gold-dark);
+  color: #9ca3af;
+  transition: all 0.2s;
 }
 
 .option-btn.correct {
@@ -127,49 +151,68 @@
   border-color: var(--color-correct);
   color: var(--color-correct);
 }
-.option-btn.correct .option-label { border-color: var(--color-correct); }
+.option-btn.correct .option-label {
+  border-color: var(--color-correct);
+  background: var(--color-correct);
+  color: white;
+  font-size: 0;
+}
+.option-btn.correct .option-label::after {
+  content: '\2713';
+  font-size: 0.14rem;
+}
 
 .option-btn.wrong {
   background: var(--color-wrong-bg);
   border-color: var(--color-wrong);
   color: var(--color-wrong);
+  animation: shake 0.4s ease-out;
 }
-.option-btn.wrong .option-label { border-color: var(--color-wrong); }
+.option-btn.wrong .option-label {
+  border-color: var(--color-wrong);
+  background: var(--color-wrong);
+  color: white;
+}
 
-.option-btn.disabled { cursor: not-allowed; }
+.option-btn.disabled { cursor: not-allowed; opacity: 0.8; }
 
 /* 解析区 */
 .quiz-explanation {
   display: none;
-  margin-top: 0.24rem;
-  padding: 0.18rem 0.2rem;
-  background: rgba(199,154,59,0.08);
+  margin-top: 0.2rem;
+  padding: 0.16rem 0.18rem;
+  background: rgba(199,154,59,0.06);
   border-left: 3px solid var(--color-gold);
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  font-size: 0.14rem;
+  font-size: 0.13rem;
   color: var(--color-ink-light);
   line-height: 1.7;
 }
-.quiz-explanation.show { display: block; }
+.quiz-explanation.show {
+  display: block;
+  animation: fadeInUp 0.3s ease-out;
+}
 .quiz-explanation-label {
   font-weight: bold;
   color: var(--color-gold-dark);
-  margin-bottom: 0.06rem;
+  margin-bottom: 0.04rem;
   font-family: var(--font-serif);
-  font-size: 0.15rem;
+  font-size: 0.14rem;
 }
 
-/* 下一题按钮区 */
+/* 底部按钮 */
 .quiz-footer {
   text-align: center;
   padding: 0 0.3rem;
   max-width: 7.5rem;
   margin: 0 auto;
 }
-
 #btn-next {
   display: none;
   width: 100%;
   max-width: 4rem;
 }
-#btn-next.show { display: inline-block; }
+#btn-next.show {
+  display: inline-block;
+  animation: fadeInUp 0.3s ease-out;
+}

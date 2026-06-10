@@ -1,233 +1,249 @@
-/* home.css - 首页样式 */
+/* home.css - 首页（水墨风）+ 难度选择页 */
 
+/* ===== 01 首页 ===== */
 #view-home {
-  background: var(--color-paper);
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 0.6rem;
-  padding-bottom: 0.5rem;
-}
-
-/* 顶部标题区 */
-.home-header {
-  text-align: center;
-  padding: 0 0.3rem;
-  margin-bottom: 0.4rem;
-}
-
-.home-title-deco {
-  font-size: 0.22rem;
-  color: var(--color-gold);
-  letter-spacing: 0.3em;
-  font-family: var(--font-serif);
-  margin-bottom: 0.08rem;
-}
-
-.home-title {
-  font-family: var(--font-serif);
-  font-size: 0.52rem;
-  font-weight: bold;
-  color: var(--color-ink);
-  letter-spacing: 0.15em;
-  line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(199,154,59,0.2);
-  margin-bottom: 0.12rem;
-}
-
-.home-subtitle {
-  font-size: 0.16rem;
-  color: var(--color-ink-light);
-  letter-spacing: 0.12em;
-  line-height: 1.5;
-}
-
-/* 分隔装饰 */
-.home-divider {
-  width: 2.4rem;
-  margin: 0 auto 0.4rem;
-}
-
-/* 等级选择区 */
-.level-section {
-  width: 100%;
-  padding: 0 0.3rem;
-}
-
-.level-section-title {
-  text-align: center;
-  font-family: var(--font-serif);
-  font-size: 0.18rem;
-  color: var(--color-gold);
-  letter-spacing: 0.2em;
-  margin-bottom: 0.24rem;
-}
-
-.level-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.16rem;
-  max-width: 6.6rem;
-  margin: 0 auto;
-}
-
-/* 等级卡片 */
-.level-card {
-  background: white;
-  border: 1.5px solid var(--color-paper-dark);
-  border-radius: var(--radius-lg);
-  padding: 0.28rem 0.2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   position: relative;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.level-card::before {
+/* 水墨山水背景 */
+.home-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(180deg,
+      #1a1a1a 0%,
+      #2a2520 15%,
+      #3d3528 30%,
+      #5a4d3a 45%,
+      #8a7b5e 58%,
+      #b8a882 68%,
+      #d4c9a8 78%,
+      #e8dfca 88%,
+      var(--color-paper) 100%
+    );
+}
+/* 远山层叠 */
+.home-bg::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold-dark));
-  opacity: 0;
-  transition: opacity 0.2s;
+  bottom: 28%;
+  left: -10%;
+  width: 120%;
+  height: 40%;
+  background:
+    radial-gradient(ellipse 80% 35% at 20% 85%, rgba(40,35,25,0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 55% 80%, rgba(50,42,30,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 30% at 80% 90%, rgba(45,38,28,0.6) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* 雾气效果 */
+.home-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(180deg, transparent, rgba(200,190,170,0.3), transparent);
+  pointer-events: none;
 }
 
-.level-card:hover,
-.level-card:active {
+.home-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 0.4rem;
+  animation: fadeIn 1s ease-out;
+}
+
+/* 金色印章 */
+.home-seal {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0 auto 0.3rem;
+  border-radius: 50%;
+  border: 2.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(199,154,59,0.1);
+  box-shadow: 0 0 20px rgba(199,154,59,0.15), 0 0 40px rgba(199,154,59,0.05);
+}
+.home-seal::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(199,154,59,0.5);
+}
+.home-seal-text {
+  font-family: var(--font-serif);
+  font-size: 0.36rem;
+  font-weight: bold;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+/* 大标题 */
+.home-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--color-gold-light);
+  line-height: 1.15;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.home-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.18rem;
+  color: rgba(232,223,202,0.8);
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+/* CTA 按钮 */
+#view-home .btn-cta {
+  animation: fadeInUp 0.6s ease-out 0.4s both, pulse 3s ease-in-out 2s infinite;
+}
+
+/* ===== 02 难度选择页 ===== */
+#view-levels {
+  background: var(--color-paper);
+  padding-top: 0.6rem;
+  padding-bottom: 0.5rem;
+  align-items: center;
+}
+
+.levels-header {
+  text-align: center;
+  margin-bottom: 0.4rem;
+  padding: 0 0.3rem;
+}
+.levels-title {
+  font-family: var(--font-display);
+  font-size: 0.36rem;
+  color: var(--color-ink);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.08rem;
+}
+.levels-subtitle {
+  font-size: 0.15rem;
+  color: var(--color-ink-light);
+  letter-spacing: 0.1em;
+}
+
+.levels-list {
+  width: 100%;
+  max-width: 6.9rem;
+  padding: 0 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+/* 难度卡片行 */
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  background: white;
+  border: 1.5px solid var(--color-paper-dark);
+  border-radius: var(--radius-lg);
+  padding: 0.24rem 0.2rem;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  opacity: 0;
+  animation: fadeInUp 0.4s ease-out both;
+}
+.level-row:nth-child(1) { animation-delay: 0.1s; }
+.level-row:nth-child(2) { animation-delay: 0.2s; }
+.level-row:nth-child(3) { animation-delay: 0.3s; }
+.level-row:nth-child(4) { animation-delay: 0.4s; }
+
+.level-row:active {
+  transform: scale(0.98);
   border-color: var(--color-gold);
   box-shadow: var(--shadow-gold);
-  transform: translateY(-2px);
 }
 
-.level-card:hover::before,
-.level-card:active::before {
-  opacity: 1;
-}
-
-.level-badge {
-  width: 0.72rem;
-  height: 0.72rem;
-  margin: 0 auto 0.14rem;
+/* 印章图标 */
+.level-row-badge {
+  width: 0.6rem;
+  height: 0.6rem;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   border-radius: 50%;
 }
-
-/* 印章文字 */
 .seal-text {
   font-family: var(--font-serif);
-  font-size: 0.3rem;
+  font-size: 0.26rem;
   font-weight: bold;
   line-height: 1;
   position: relative;
   z-index: 2;
 }
 
-/* L1 - 青铜印章（新芽绿底） */
+/* 各等级印章色 */
 .badge-l1 {
   background: radial-gradient(circle, #f0f7f0 30%, #d4edda 100%);
-  border: 2.5px solid #5a9e6f;
-  box-shadow: 0 2px 8px rgba(90, 158, 111, 0.25), inset 0 0 8px rgba(90, 158, 111, 0.1);
+  border: 2px solid #5a9e6f;
+  box-shadow: 0 2px 8px rgba(90,158,111,0.2);
 }
 .badge-l1 .seal-text { color: #2d6a3f; }
-.badge-l1::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(90, 158, 111, 0.4);
-}
+.badge-l1::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed rgba(90,158,111,0.4); }
 
-/* L2 - 白银印章（冷银蓝底） */
 .badge-l2 {
   background: radial-gradient(circle, #f8f9fc 30%, #e2e8f0 100%);
-  border: 2.5px solid #64748b;
-  box-shadow: 0 2px 8px rgba(100, 116, 139, 0.3), inset 0 0 8px rgba(100, 116, 139, 0.1);
+  border: 2px solid #64748b;
+  box-shadow: 0 2px 8px rgba(100,116,139,0.2);
 }
 .badge-l2 .seal-text { color: #334155; }
-.badge-l2::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(100, 116, 139, 0.4);
-}
+.badge-l2::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed rgba(100,116,139,0.4); }
 
-/* L3 - 黄金印章（金色底） */
 .badge-l3 {
   background: radial-gradient(circle, #fffbeb 20%, #fde68a 100%);
-  border: 2.5px solid var(--color-gold);
-  box-shadow: 0 2px 12px rgba(199, 154, 59, 0.4), inset 0 0 8px rgba(199, 154, 59, 0.15);
+  border: 2px solid var(--color-gold);
+  box-shadow: 0 2px 8px rgba(199,154,59,0.3);
 }
 .badge-l3 .seal-text { color: #92400e; }
-.badge-l3::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(199, 154, 59, 0.5);
-}
+.badge-l3::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed rgba(199,154,59,0.5); }
 
-/* L4 - 朱砂印章（朱红底，最高级） */
 .badge-l4 {
   background: radial-gradient(circle, #fef2f2 20%, #fecaca 100%);
-  border: 2.5px solid #991b1b;
-  box-shadow: 0 2px 12px rgba(153, 27, 27, 0.35), inset 0 0 10px rgba(153, 27, 27, 0.1);
+  border: 2px solid #991b1b;
+  box-shadow: 0 2px 8px rgba(153,27,27,0.25);
 }
 .badge-l4 .seal-text { color: #7f1d1d; }
-.badge-l4::after {
-  content: '';
-  position: absolute;
-  inset: 3px;
-  border-radius: 50%;
-  border: 1.5px dashed rgba(153, 27, 27, 0.4);
-}
+.badge-l4::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; border: 1px dashed rgba(153,27,27,0.4); }
 
-/* 卡片悬浮时印章动效 */
-.level-card:hover .level-badge,
-.level-card:active .level-badge {
-  transform: scale(1.08) rotate(-3deg);
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.level-card .level-badge {
-  transition: transform 0.2s ease;
-}
-
-.level-tag {
-  display: inline-block;
-  background: var(--color-gold);
-  color: white;
-  font-size: 0.12rem;
-  font-weight: bold;
-  padding: 0.02rem 0.1rem;
-  border-radius: 20px;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.08rem;
-}
-
-.level-name {
-  font-family: var(--font-serif);
-  font-size: 0.18rem;
-  font-weight: bold;
+.level-row-info { flex: 1; }
+.level-row-name {
+  font-family: var(--font-display);
+  font-size: 0.22rem;
   color: var(--color-ink);
-  letter-spacing: 0.08em;
-  margin-bottom: 0.06rem;
+  margin-bottom: 0.02rem;
 }
-
-.level-desc {
-  font-size: 0.12rem;
-  color: #6B7280;
-  line-height: 1.5;
-}
-
-/* 底部提示 */
-.home-footer {
-  text-align: center;
-  margin-top: 0.36rem;
+.level-row-desc {
   font-size: 0.13rem;
-  color: #9CA3AF;
-  letter-spacing: 0.05em;
+  color: var(--color-ink-light);
+  letter-spacing: 0.04em;
+}
+
+.level-row-arrow {
+  font-size: 0.24rem;
+  color: var(--color-gold);
+  opacity: 0.5;
+  flex-shrink: 0;
 }

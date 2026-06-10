@@ -1,0 +1,149 @@
+/* ai-reveal.css - AI推演过渡页 */
+
+#view-reveal {
+  background: linear-gradient(180deg, #1a1510 0%, #2a2218 40%, #1a1510 100%);
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.reveal-title {
+  font-family: var(--font-display);
+  font-size: 0.3rem;
+  color: var(--color-gold-light);
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+/* 水晶球区域 */
+.reveal-orb-area {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 0.5rem;
+}
+
+.reveal-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(242,227,179,0.3), rgba(199,154,59,0.15) 50%, rgba(90,62,27,0.3) 100%);
+  animation: orbGlow 2.5s ease-in-out infinite;
+}
+
+.reveal-orb-inner {
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.15), transparent 60%);
+}
+
+.reveal-orb-ring {
+  position: absolute;
+  inset: -10%;
+  border-radius: 50%;
+  border: 1px solid rgba(199,154,59,0.3);
+  animation: ringExpand 2s ease-out infinite;
+}
+.reveal-orb-ring-2 {
+  animation-delay: 1s;
+}
+
+/* 雷达图 */
+.reveal-radar {
+  position: absolute;
+  inset: 0;
+}
+
+.reveal-radar-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(199,154,59,0.6), transparent);
+  transform-origin: left center;
+  animation: radarSweep 3s linear infinite;
+}
+
+/* 三个轴 */
+.reveal-axis {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.06rem;
+}
+
+.reveal-axis-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  display: block;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.reveal-axis-label {
+  font-size: 0.13rem;
+  color: var(--color-gold-light);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* 三个轴的位置：等距120度 */
+.reveal-axis-1 {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+}
+.reveal-axis-2 {
+  bottom: 15%;
+  left: 5%;
+  flex-direction: row;
+}
+.reveal-axis-2 .reveal-axis-dot { animation-delay: 0.6s; }
+.reveal-axis-3 {
+  bottom: 15%;
+  right: 5%;
+  flex-direction: row-reverse;
+}
+.reveal-axis-3 .reveal-axis-dot { animation-delay: 1.2s; }
+
+/* 底部状态 */
+.reveal-status {
+  font-family: var(--font-serif);
+  font-size: 0.15rem;
+  color: rgba(199,154,59,0.7);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.16rem;
+}
+
+.reveal-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.reveal-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  animation: dotBlink 1.4s ease-in-out infinite;
+}
+.reveal-dots span:nth-child(2) { animation-delay: 0.2s; }
+.reveal-dots span:nth-child(3) { animation-delay: 0.4s; }

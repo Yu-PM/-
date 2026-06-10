@@ -1,138 +1,350 @@
-/* result.css - 结果页与海报弹窗样式 */
+/* result.css - 结果页与海报弹窗 */
 
 #view-result {
   background: var(--color-paper);
   padding-top: 0.4rem;
   padding-bottom: 0.6rem;
   align-items: center;
+  position: relative;
+  overflow: hidden;
 }
 
-/* 卷轴容器 */
+/* 等级背景 */
+#view-result[data-level="L1"] { background: linear-gradient(180deg, #f0f7f0 0%, #d4edda 35%, #f0f7f0 100%); }
+#view-result[data-level="L2"] { background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 35%, #f1f5f9 100%); }
+#view-result[data-level="L3"] { background: linear-gradient(180deg, #fffbeb 0%, rgba(253,230,138,0.2) 35%, #fffbeb 100%); }
+#view-result[data-level="L4"] { background: linear-gradient(180deg, #fef2f2 0%, rgba(254,202,202,0.2) 35%, #fef2f2 100%); }
+
 .scroll-wrap {
   width: 100%;
   max-width: 7.5rem;
   padding: 0 0.3rem;
+  position: relative;
+  z-index: 1;
   animation: scrollUnroll 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
-@keyframes scrollUnroll {
-  from {
-    opacity: 0;
-    transform: translateY(-0.3rem) scaleY(0.85);
-    transform-origin: top center;
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scaleY(1);
-  }
-}
+.scroll-wrap > *:nth-child(1) { opacity: 0; animation: fadeInUp 0.5s ease-out 0.2s both; }
+.scroll-wrap > *:nth-child(2) { opacity: 0; animation: fadeInUp 0.5s ease-out 0.4s both; }
+.scroll-wrap > *:nth-child(3) { opacity: 0; animation: fadeInUp 0.5s ease-out 0.6s both; }
+.scroll-wrap > *:nth-child(4) { opacity: 0; animation: fadeInUp 0.5s ease-out 0.8s both; }
+.scroll-wrap > *:nth-child(5) { opacity: 0; animation: fadeInUp 0.5s ease-out 1.0s both; }
+.scroll-wrap > *:nth-child(6) { opacity: 0; animation: fadeInUp 0.5s ease-out 1.2s both; }
 
 /* 榜单标题 */
 .result-banner {
   text-align: center;
-  margin-bottom: 0.32rem;
-  position: relative;
+  margin-bottom: 0.28rem;
 }
-
 .result-banner-title {
-  display: inline-block;
-  font-family: var(--font-serif);
-  font-size: 0.22rem;
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 0.36rem;
   color: var(--color-gold);
-  letter-spacing: 0.4em;
-  padding: 0.1rem 0.3rem;
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.06rem;
+}
+.result-banner-sub {
+  font-size: 0.15rem;
+  color: var(--color-ink-light);
+  letter-spacing: 0.1em;
 }
 
-/* 身份主卡 */
+/* ===== 身份主卡 ===== */
 .identity-card {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 0.4rem 0.28rem 0.36rem;
+  padding:0.3rem 0.24rem 0.24rem;
   margin-bottom: 0.2rem;
   box-shadow: var(--shadow-md);
-  border: 1.5px solid var(--color-paper-dark);
+  border: 1px solid var(--color-paper-dark);
+  text-align: center;
   position: relative;
   overflow: hidden;
-  text-align: center;
 }
 
+/* 卷轴装饰 — 顶部 */
 .identity-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold-light), var(--color-gold-dark));
+  top: 0;
+  left: 0.3rem;
+  right: 0.3rem;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  border-radius: 2px;
 }
 
-.identity-badge-icon {
-  font-size: 0.56rem;
-  margin-bottom: 0.12rem;
-  line-height: 1;
-  display: block;
+/* 卷轴装饰 — 底部 */
+.identity-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0.3rem;
+  right: 0.3rem;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  border-radius: 2px;
+}
+
+/* ===== 人物剪影区域 ===== */
+.identity-silhouette-wrap {
+  width: 2.4rem;
+  height: 2.8rem;
+  margin: 0 auto 0.16rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 底部云雾装饰 */
+.identity-silhouette-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -0.1rem;
+  left: -20%;
+  width: 140%;
+  height: 0.6rem;
+  background: radial-gradient(ellipse at center, rgba(199,154,59,0.1) 0%, transparent 70%);
+  filter: blur(12px);
+  pointer-events: none;
+}
+
+.identity-silhouette {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ===== 增强型水墨剪影 ===== */
+.identity-silhouette::before {
+  content: '';
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  height: 88%;
+  filter: drop-shadow(0 4px 12px rgba(90,62,27,0.2));
+}
+
+/* 合规 — 持卷判官（左手持卷轴，右手背后，正气凛然） */
+.identity-silhouette.dim-compliance::before {
+  background:
+    linear-gradient(180deg, rgba(90,62,27,0.55) 0%, rgba(90,62,27,0.85) 50%, rgba(90,62,27,0.95) 100%);
+  clip-path: polygon(
+    50% 0%, 46% 2%, 43% 6%, 41% 12%, 40% 18%,
+    38% 24%, 36% 28%, 32% 32%, 28% 35%, 24% 37%,
+    20% 36%, 17% 38%, 14% 42%, 12% 48%, 14% 52%,
+    18% 50%, 24% 46%, 30% 42%, 34% 40%,
+    36% 46%, 37% 54%, 36% 62%, 35% 70%,
+    34% 78%, 33% 86%, 35% 94%, 38% 100%,
+    45% 100%, 48% 100%, 52% 100%, 55% 100%,
+    62% 100%, 65% 94%, 67% 86%, 66% 78%,
+    65% 70%, 64% 62%, 63% 54%, 64% 46%,
+    66% 40%, 70% 38%, 76% 42%, 80% 48%,
+    82% 44%, 80% 38%, 76% 34%, 72% 30%,
+    68% 26%, 65% 20%, 63% 14%, 60% 8%,
+    57% 4%, 54% 1%
+  );
+}
+/* 合规 — 卷轴装饰 */
+.identity-silhouette.dim-compliance::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  top: 42%;
+  width: 18%;
+  height: 4%;
+  background: linear-gradient(90deg, rgba(199,154,59,0.6), rgba(199,154,59,0.3));
+  border-radius: 2px;
+  transform: rotate(-15deg);
+}
+
+/* 商业 — 行者（手持行杖，衣袂飘飘，行走姿态） */
+.identity-silhouette.dim-business::before {
+  background:
+    linear-gradient(180deg, rgba(90,62,27,0.5) 0%, rgba(90,62,27,0.8) 50%, rgba(90,62,27,0.92) 100%);
+  clip-path: polygon(
+    50% 0%, 45% 3%, 42% 8%, 40% 14%, 38% 20%,
+    36% 26%, 33% 32%, 28% 36%, 22% 40%, 16% 38%,
+    12% 34%, 10% 38%, 12% 44%, 18% 48%,
+    26% 50%, 33% 48%, 36% 44%,
+    37% 52%, 36% 60%, 34% 68%,
+    32% 76%, 30% 84%, 32% 92%, 36% 100%,
+    42% 100%, 44% 92%, 46% 84%,
+    50% 80%, 54% 84%, 56% 92%, 58% 100%,
+    64% 100%, 68% 92%, 70% 84%,
+    68% 76%, 66% 68%, 64% 60%, 63% 52%,
+    64% 44%, 67% 48%, 74% 50%,
+    82% 48%, 88% 44%, 90% 38%,
+    88% 34%, 84% 38%, 78% 40%,
+    72% 36%, 67% 32%, 64% 26%,
+    62% 20%, 60% 14%, 58% 8%,
+    55% 3%
+  );
+}
+/* 商业 — 行杖装饰 */
+.identity-silhouette.dim-business::after {
+  content: '';
+  position: absolute;
+  right: 8%;
+  top: 20%;
+  width: 3%;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(90,62,27,0.7), rgba(90,62,27,0.3));
+  border-radius: 1px;
+  transform: rotate(8deg);
+}
+
+/* 治理 — 算者（端坐沉稳，双手抱算盘，宽袖大袍） */
+.identity-silhouette.dim-governance::before {
+  background:
+    linear-gradient(180deg, rgba(90,62,27,0.5) 0%, rgba(90,62,27,0.75) 50%, rgba(90,62,27,0.9) 100%);
+  clip-path: polygon(
+    50% 0%, 45% 3%, 42% 8%, 39% 15%, 37% 22%,
+    35% 28%, 32% 34%, 28% 38%, 24% 42%,
+    20% 48%, 22% 54%, 28% 52%, 34% 48%,
+    38% 44%, 40% 50%, 40% 58%,
+    38% 66%, 36% 74%, 34% 82%,
+    35% 90%, 38% 98%, 42% 100%,
+    48% 100%, 50% 98%, 52% 100%, 58% 100%,
+    62% 98%, 65% 90%, 66% 82%,
+    64% 74%, 62% 66%, 60% 58%, 60% 50%,
+    62% 44%, 66% 48%, 72% 52%,
+    78% 54%, 80% 48%, 76% 42%,
+    72% 38%, 68% 34%, 65% 28%,
+    63% 22%, 61% 15%, 58% 8%,
+    55% 3%
+  );
+}
+/* 治理 — 算盘装饰 */
+.identity-silhouette.dim-governance::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translateX(-50%);
+  width: 22%;
+  height: 8%;
+  border: 2px solid rgba(199,154,59,0.4);
+  border-radius: 2px;
+  background: rgba(199,154,59,0.05);
+}
+
+/* 均衡 — 宗师（负手而立，大氅飘逸，气场恢宏） */
+.identity-silhouette.dim-balanced::before {
+  background:
+    linear-gradient(180deg, rgba(90,62,27,0.6) 0%, rgba(90,62,27,0.85) 50%, rgba(90,62,27,0.98) 100%);
+  clip-path: polygon(
+    50% 0%, 45% 2%, 42% 6%, 39% 12%, 37% 18%,
+    35% 24%, 32% 30%, 26% 34%, 18% 36%,
+    10% 34%, 6% 38%, 8% 44%, 14% 50%,
+    22% 52%, 30% 48%, 34% 44%,
+    36% 50%, 36% 58%, 34% 66%,
+    32% 74%, 30% 82%, 28% 88%,
+    30% 94%, 34% 100%, 40% 100%,
+    46% 96%, 50% 94%, 54% 96%,
+    60% 100%, 66% 100%, 70% 94%,
+    72% 88%, 70% 82%, 68% 74%,
+    66% 66%, 64% 58%, 64% 50%,
+    66% 44%, 70% 48%, 78% 52%,
+    86% 50%, 92% 44%, 94% 38%,
+    90% 34%, 82% 36%, 74% 34%,
+    68% 30%, 65% 24%, 63% 18%,
+    61% 12%, 58% 6%, 55% 2%
+  );
+}
+/* 宗师 — 气场光环 */
+.identity-silhouette.dim-balanced::after {
+  content: '';
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 30%;
+  background: radial-gradient(ellipse, rgba(199,154,59,0.12) 0%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+/* ===== 等级气势差异 ===== */
+/* L1 — 质朴素雅 */
+#view-result[data-level="L1"] .identity-silhouette::before {
+  filter: drop-shadow(0 2px 8px rgba(90,62,27,0.15));
+  opacity: 0.75;
+}
+/* L2 — 渐显锋芒 */
+#view-result[data-level="L2"] .identity-silhouette::before {
+  filter: drop-shadow(0 3px 10px rgba(90,62,27,0.2));
+  opacity: 0.82;
+}
+/* L3 — 锋芒毕露 */
+#view-result[data-level="L3"] .identity-silhouette::before {
+  filter: drop-shadow(0 4px 16px rgba(199,154,59,0.25));
+  opacity: 0.9;
+}
+/* L4 — 霸气侧漏 */
+#view-result[data-level="L4"] .identity-silhouette::before {
+  filter: drop-shadow(0 6px 24px rgba(153,27,27,0.3)) drop-shadow(0 0 40px rgba(199,154,59,0.15));
+  opacity: 1;
+}
+#view-result[data-level="L4"] .identity-silhouette-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(ellipse, rgba(199,154,59,0.06) 0%, transparent 60%);
+  pointer-events: none;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* 底部墨迹晕染 */
+.identity-silhouette-ink {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 15%;
+  background: radial-gradient(ellipse, rgba(90,62,27,0.12), transparent 70%);
+  filter: blur(10px);
 }
 
 .identity-label {
   font-size: 0.14rem;
-  color: var(--color-gold-dark);
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   font-family: var(--font-serif);
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.08rem;
+  color: var(--color-gold-dark);
 }
 
 .identity-name {
-  font-family: var(--font-serif);
-  font-size: 0.5rem;
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 0.48rem;
   color: var(--color-ink);
-  letter-spacing: 0.2em;
-  margin-bottom: 0.2rem;
-  text-shadow: 1px 1px 3px rgba(199,154,59,0.25);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.08rem;
 }
 
-.identity-intro {
-  font-size: 0.15rem;
-  color: var(--color-ink-light);
-  line-height: 1.8;
-  margin-bottom: 0.2rem;
-}
-
-.identity-quote {
-  font-family: var(--font-serif);
-  font-size: 0.17rem;
-  color: var(--color-gold-dark);
-  font-style: italic;
-  padding: 0.14rem 0.2rem;
-  border-left: 3px solid var(--color-gold);
-  background: rgba(199,154,59,0.06);
-  border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  text-align: left;
-  line-height: 1.6;
-}
-
-/* 详情区块 */
+/* ===== 内容区块 ===== */
 .result-section {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 0.28rem;
-  margin-bottom: 0.16rem;
+  padding: 0.24rem;
+  margin-bottom: 0.14rem;
   box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-paper-dark);
 }
 
 .result-section-title {
-  font-family: var(--font-serif);
-  font-size: 0.17rem;
-  font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 0.2rem;
   color: var(--color-gold);
   letter-spacing: 0.15em;
-  margin-bottom: 0.16rem;
+  margin-bottom: 0.12rem;
   display: flex;
   align-items: center;
-  gap: 0.08rem;
+  gap: 0.06rem;
 }
-
 .result-section-title::after {
   content: '';
   flex: 1;
@@ -140,46 +352,82 @@
   background: linear-gradient(90deg, var(--color-gold), transparent);
 }
 
+.result-quote-text {
+  font-family: var(--font-serif);
+  font-size: 0.16rem;
+  color: var(--color-brown);
+  font-style: italic;
+  line-height: 1.8;
+  padding-left: 0.16rem;
+  border-left: 3px solid var(--color-gold);
+}
+
 .result-ai-comment {
-  font-size: 0.15rem;
+  font-size: 0.14rem;
   color: var(--color-ink-light);
   line-height: 1.9;
 }
 
+/* ===== 修炼建议 — pill 标签样式 ===== */
 .result-steps {
   list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.1rem;
 }
-
 .result-steps li {
-  font-size: 0.15rem;
-  color: var(--color-ink);
-  padding-left: 0.24rem;
+  font-size: 0.13rem;
+  color: var(--color-gold-dark);
+  padding: 0.06rem 0.16rem;
+  background: var(--color-gold-light);
+  border: 1px solid rgba(199,154,59,0.3);
+  border-radius: 0.24rem;
+  line-height: 1.4;
   position: relative;
-  line-height: 1.6;
 }
-
 .result-steps li::before {
-  content: '✦';
-  position: absolute;
-  left: 0;
+  content: '·';
   color: var(--color-gold);
-  font-size: 0.12rem;
-  top: 0.04rem;
+  font-weight: bold;
+  margin-right: 0.04rem;
 }
 
-/* 操作按钮区 */
+/* 不同等级的 pill 配色 */
+#view-result[data-level="L1"] .result-steps li {
+  background: var(--color-l1-light);
+  border-color: rgba(90,158,111,0.3);
+  color: var(--color-l1-dark);
+}
+#view-result[data-level="L1"] .result-steps li::before { color: var(--color-l1); }
+
+#view-result[data-level="L2"] .result-steps li {
+  background: var(--color-l2-light);
+  border-color: rgba(100,116,139,0.3);
+  color: var(--color-l2-dark);
+}
+#view-result[data-level="L2"] .result-steps li::before { color: var(--color-l2); }
+
+#view-result[data-level="L4"] .result-steps li {
+  background: var(--color-l4-light);
+  border-color: rgba(153,27,27,0.2);
+  color: var(--color-l4-dark);
+}
+#view-result[data-level="L4"] .result-steps li::before { color: var(--color-l4); }
+
+/* ===== 操作按钮 ===== */
 .result-actions {
   display: flex;
-  flex-direction: column;
   gap: 0.14rem;
-  margin-top: 0.28rem;
-  align-items: center;
+  margin-top: 0.24rem;
+  justify-content: center;
+}
+.result-actions .btn-outline,
+.result-actions .btn-gold {
+  flex: 1;
+  max-width: 2.8rem;
 }
 
-/* 海报弹窗 */
+/* ===== 海报弹窗 ===== */
 #poster-modal {
   display: none;
   position: fixed;
@@ -190,24 +438,28 @@
   justify-content: center;
   padding: 0.3rem;
 }
-#poster-modal.show { display: flex; }
+#poster-modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease-out;
+}
 
 .poster-modal-inner {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 0.28rem;
+  padding: 0.24rem;
   width: 100%;
   max-width: 6rem;
   max-height: 90vh;
   overflow-y: auto;
   text-align: center;
+  animation: fadeInUp 0.4s ease-out;
 }
 
 .poster-modal-title {
   font-family: var(--font-serif);
   font-size: 0.18rem;
   color: var(--color-ink);
-  margin-bottom: 0.18rem;
+  margin-bottom: 0.16rem;
   letter-spacing: 0.1em;
 }
 
@@ -215,13 +467,13 @@
   width: 100%;
   border-radius: var(--radius-md);
   display: block;
-  margin-bottom: 0.18rem;
+  margin-bottom: 0.16rem;
 }
 
 .poster-hint {
-  font-size: 0.13rem;
+  font-size: 0.12rem;
   color: #9CA3AF;
-  margin-bottom: 0.18rem;
+  margin-bottom: 0.16rem;
 }
 
 .poster-actions {
