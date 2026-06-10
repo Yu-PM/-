@@ -17,14 +17,14 @@
   background:
     linear-gradient(180deg,
       #1a1a1a 0%,
-      #252018 12%,
-      #3d3528 28%,
-      #5a4d3a 44%,
-      #7a6b52 58%,
-      #9a8a68 70%,
-      #b8a882 82%,
-      #c8bb96 92%,
-      #d4c9a8 100%
+      #252018 10%,
+      #3d3528 25%,
+      #5a4d3a 40%,
+      #6b5c44 55%,
+      #7a6b52 68%,
+      #8a7b5e 80%,
+      #9a8a68 90%,
+      #a89870 100%
     );
 }
 /* 远山层叠 */
@@ -58,7 +58,7 @@
   z-index: 1;
   text-align: center;
   padding: 0 0.4rem;
-  margin-top: -0.6rem;
+  margin-top: -1.2rem;
   animation: fadeIn 1s ease-out;
 }
 
